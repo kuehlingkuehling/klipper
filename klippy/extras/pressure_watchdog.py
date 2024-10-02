@@ -66,5 +66,10 @@ class PressureWatchdog:
         nextwake = self.reactor.monotonic() + self.interval
         return nextwake
 
+    def get_status(self, eventtime):
+            return {'triggered': (self.max_pressure_triggered || self.min_pressure_triggered),
+                    'max_pressure_triggered': self.max_pressure_triggered,
+                    'min_pressure_triggered': self.min_pressure_triggered}
+
 def load_config_prefix(config):
     return PressureWatchdog(config)
