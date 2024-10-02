@@ -28,10 +28,10 @@ class HoneywellABP:
         self.i2c = bus.MCU_I2C_from_config(config, default_addr=0x28)
         self.p_min = config.getfloat('p_min')
         self.p_max = config.getfloat('p_max')
-        units = {'mbar': 'mbar', 
-                 'bar': 'bar', 
-                 'kPa': 'kPa', 
-                 'MPa': 'MPa', 
+        units = {'mbar': 'mbar',
+                 'bar': 'bar',
+                 'kPa': 'kPa',
+                 'MPa': 'MPa',
                  'psi': 'psi'}
         self.unit = config.getchoice('unit', units)
         self.last_pressure = 0.
