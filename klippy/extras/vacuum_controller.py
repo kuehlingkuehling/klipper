@@ -72,11 +72,11 @@ class VacuumController:
                     self._set_evacuation(1)
                 elif self.is_evacuating and (cur_pressure < self.pressure):
                     self._set_evacuation(0)
-                    self.vacuum_ready = True
 
                 # low pressure timeout logic
                 if cur_pressure < self.threshold:
                     self.last_time_pressure_ok = eventtime
+                    self.vacuum_ready = True
                 elif self.last_time_pressure_ok and ((eventtime - self.last_time_pressure_ok) > self.timeout):
                     try:
                         self.gcode.run_script(self.low_pressure_gcode.render())
